@@ -1,14 +1,16 @@
 "use client";
 import Hero from "@/components/molecules/Hero";
 import BookList from "@/components/molecules/BookList";
-import { PinContainer, PinPerspective } from "@/components/ui/3d-pin";
-import { BackgroundGradient } from "@/components/ui/background-gradient";
+import Navbar from "@/components/molecules/Navbar";
+import Tabs from "@/components/molecules/Tabs";
 
 export default function Home() {
   return (
-    <div>
-      <Hero />
-      <BookList />
+    <div className="bg-background">
+      {/* <Hero /> */}
+      {/* <BookList /> */}
+      {/* <Navbar /> */}
+      <Tabs />
     </div>
   );
 }
