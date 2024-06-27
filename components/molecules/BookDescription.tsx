@@ -1,6 +1,17 @@
 import React from "react";
 import Image from "next/image";
 
+interface Book {
+  title: string;
+  description: string;
+  author: string;
+  genres: string[];
+  rating: number;
+  month: string;
+  cover_link: string;
+  quote: string;
+}
+
 const imageUrl =
   "https://glrapmnekaodxikntunp.supabase.co/storage/v1/object/sign/Books/test-portada.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJCb29rcy90ZXN0LXBvcnRhZGEuanBnIiwiaWF0IjoxNzE5MzM5NzcwLCJleHAiOjE3NTA4NzU3NzB9.SZwPGuCIRr2Ck8fgtvs4KVeDfHw08ivi-Hkal8Y0eRk&t=2024-06-25T18%3A22%3A51.640Z";
 
@@ -17,9 +28,15 @@ const text = `“Life before <span style="color: #84b898;">Death</span>.</br> St
 const BookDetails = ({
   title,
   description,
+  author,
+  genres,
+  quote,
 }: {
   title: string;
   description: string;
+  author: string;
+  genres: string[];
+  quote: string;
 }) => {
   return (
     <div className="flex justify-center items-center w-full">
@@ -33,7 +50,7 @@ const BookDetails = ({
           <GenrePill genre="Drama" />
         </div>
         <span className="text-sm sm:text-base text-gray-700 mr-2 text-center mt-2 mb-2">
-          <strong>Author:</strong> John Doe
+          {author}
         </span>
         <p className="text-base sm:text-xl text-black mb-2 text-center mt-2 mb-2">
           {description}
@@ -43,28 +60,38 @@ const BookDetails = ({
         </div>
         <div
           className="text-base sm:text-lg text-gray-700 mb-2 text-center mt-2 mb-2"
-          dangerouslySetInnerHTML={{ __html: `<em>${text}</em>` }}
+          dangerouslySetInnerHTML={{
+            __html: `<em>${quote ? quote : text}</em>`,
+          }}
         />
       </div>
     </div>
   );
 };
 
-const BookDescription = ({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) => {
+const BookDescription = ({ book }: { book: Book }) => {
   return (
     <div className="flex justify-center items-center p-4 bg-background rounded-lg h-full">
       <div className="container mx-auto">
         <div className="flex justify-center items-center">
-          <div className="w-1/2 flex justify-center items-center">
-            <Image src={imageUrl} alt="Book" width={300} height={450} />
+          <div className="w-2/3 flex justify-center items-center">
+            <Image
+              src={book.cover_link ? book.cover_link : imageUrl}
+              alt="Book"
+              width={360}
+              height={540}
+              className="rounded-3xl"
+            />
           </div>
-          <BookDetails title={title} description={description} />
+          <div className="w-1/3">
+            <BookDetails
+              title={book.title}
+              description={book.description}
+              author={book.author}
+              genres={book.genres}
+              quote={book.quote}
+            />
+          </div>
         </div>
       </div>
     </div>

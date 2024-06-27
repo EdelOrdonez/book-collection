@@ -66,7 +66,7 @@ const Tabs = () => {
     <div className="flex justify-center items-center h-screen">
       <div className="w-full max-w-7xl p-10 bg-background rounded-lg">
         <div className="flex flex-col md:flex-row">
-          <ul className="flex flex-col gap-0 text-sm font-medium text-gray-500 dark:text-gray-400 md:me-4 mb-4 md:mb-0">
+          <ul className="flex flex-col gap-0 text-sm font-medium text-gray-500 dark:text-gray-400 w-1/5 mb-4 md:mb-0">
             {books.map((book) => (
               <Tab
                 key={book.id}
@@ -77,15 +77,11 @@ const Tabs = () => {
               />
             ))}
           </ul>
-          <div className="p-4 bg-background rounded-lg md:p-8 w-full">
+          <div className="p-4 bg-background rounded-lg md:p-8 w-4/5">
             {books.map(
               (book) =>
                 activeTab === book.month && (
-                  <BookDescription
-                    key={book.id}
-                    description={book.description}
-                    title={book.title}
-                  />
+                  <BookDescription key={book.id} book={book} />
                 )
             )}
           </div>
