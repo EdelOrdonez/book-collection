@@ -41,7 +41,7 @@ const BookDetails = ({
   return (
     <div className="flex justify-center items-center w-full">
       <div className="flex flex-col justify-center items-center pl-4">
-        <h2 className="text-black text-2xl font-bold mb-2 text-center w-full">
+        <h2 className="text-black text-2xl font-bold mb-2 text-center w-full font-playwrite">
           {title}
         </h2>
         <div className="flex justify-center w-full mt-2 mb-2">
@@ -49,17 +49,19 @@ const BookDetails = ({
           <GenrePill genre="Horror" />
           <GenrePill genre="Drama" />
         </div>
-        <span className="text-sm sm:text-base text-gray-700 mr-2 text-center mt-2 mb-2">
+        <span className="text-sm sm:text-base text-gray-700 mr-2 text-center mt-2 mb-2 font-playwrite">
           {author}
         </span>
-        <p className="text-base sm:text-xl text-black mb-2 text-center mt-2 mb-2">
+        <p className="text-sm sm:text-lg text-black mb-2 text-center mt-2 mb-2 font-playwrite">
           {description}
         </p>
         <div className="flex flex-wrap justify-center items-center mb-2 mt-2">
-          <span className="text-base sm:text-md text-gray-700">★★★★☆</span>
+          <span className="text-base sm:text-md text-gray-700 font-playwrite">
+            ★★★★☆
+          </span>
         </div>
         <div
-          className="text-base sm:text-lg text-gray-700 mb-2 text-center mt-2 mb-2"
+          className="text-base sm:text-lg text-gray-700 mb-2 text-center mt-2 mb-2 font-playwrite"
           dangerouslySetInnerHTML={{
             __html: `<em>${quote ? quote : text}</em>`,
           }}
@@ -78,8 +80,8 @@ const BookDescription = ({ book }: { book: Book }) => {
             <Image
               src={book.cover_link ? book.cover_link : imageUrl}
               alt="Book"
-              width={360}
-              height={540}
+              width={396}
+              height={594}
               className="rounded-3xl"
             />
           </div>

@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+IT+Moderna:wght@100..400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -27,4 +30,9 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.underline-thick {
+  text-decoration: underline;
+  text-decoration-thickness: 5px;
 }
